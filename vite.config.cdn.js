@@ -1,19 +1,19 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: 'src/iframe.jsx',
-      name: 'ReactChatWidget',
-      fileName: (format) => `react-chat-widget.${format}.js`,
-      formats: ['es', 'umd']
+      entry: 'src/cdn.js',
+      name: 'ChatWidget',
+      fileName: (format) => `chat-widget.${format}.js`,
+      formats: ['iife']
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: [],
       output: {
+        inlineDynamicImports: true,
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM'
@@ -21,4 +21,4 @@ export default defineConfig({
       }
     }
   }
-})
+}) 
